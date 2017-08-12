@@ -1,14 +1,11 @@
-﻿<nav class="z-depth-0">
-    <div class="nav-wrapper light-blue accent-3">
-        <ul id="nav-mobile" class="left">
-            <li><a [routerLink]="['home']">Home</a></li>
-            <li><a [routerLink]="['user']">Users Management</a></li>
-        </ul>
-    </div>
-</nav>
-<div class='container'>
+﻿<navbar-def *ngIf="!logged"></navbar-def>
+<user-navbar *ngIf="!asAdmin"></user-navbar>
+<admin-navbar *ngIf="asAdmin"></admin-navbar>
+
+<div class="col s12">
     <router-outlet></router-outlet>
 </div>
+
 <footer class="page-footer light-blue accent-3">
     <div class="container">
         <div class="row">
@@ -17,12 +14,12 @@
                 <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
             </div>
             <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
+                <h5 class="white-text">Site réalisé avec</h5>
                 <ul>
-                    <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                    <li><a class="grey-text text-lighten-3" href="http://materializecss.com/about.html"> Materialize CSS </a></li>
+                    <li><a class="grey-text text-lighten-3" href="http://getbootstrap.com/"> Bootstrap </a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://angular.io/"> Angular 2 </a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://www.asp.net/"> ASP.NET </a></li>
                 </ul>
             </div>
         </div>
@@ -30,7 +27,7 @@
     <div class="footer-copyright">
         <div class="container">
             © 2017 Copyright Simon De Greve
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            <a class="grey-text text-lighten-4 right" href="https://github.com/Yoiro"> Autres projets </a>
         </div>
     </div>
 </footer>

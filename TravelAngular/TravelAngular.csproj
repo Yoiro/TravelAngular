@@ -88,8 +88,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.0\lib\net45\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.2.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net45\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
@@ -171,48 +171,24 @@
     <Compile Include="Controllers\PrivateMessageAPIController.cs" />
     <Compile Include="Controllers\TravelAPIController.cs" />
     <Compile Include="Controllers\UserAPIController.cs" />
-    <Compile Include="DBContext\Address.cs">
-      <DependentUpon>TravelAngularEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBContext\Comment.cs">
-      <DependentUpon>TravelAngularEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBContext\PrivateMessage.cs">
-      <DependentUpon>TravelAngularEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBContext\Travel.cs">
-      <DependentUpon>TravelAngularEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBContext\TravelAngularEntities.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TravelAngularEntities.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBContext\TravelAngularEntities.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TravelAngularEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBContext\TravelAngularEntities.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TravelAngularEntities.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="DBContext\User.cs">
-      <DependentUpon>TravelAngularEntities.tt</DependentUpon>
-    </Compile>
+    <Compile Include="DBContext\DbFiller.cs" />
+    <Compile Include="DBContext\TravelAngularContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Classes\Address.cs" />
+    <Compile Include="Models\Classes\Comment.cs" />
+    <Compile Include="Models\Classes\PrivateMessage.cs" />
+    <Compile Include="Models\Classes\Travel.cs" />
+    <Compile Include="Models\Classes\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.component.html" />
-    <Content Include="app\Components\user.component.html" />
-    <Content Include="App_Data\TravelAngular.mdf" />
-    <Content Include="App_Data\TravelAngular_log.ldf">
-      <DependentUpon>TravelAngular.mdf</DependentUpon>
-    </Content>
+    <Content Include="app\Components\Templates\admin.navbar.component.html" />
+    <Content Include="app\Components\Templates\user.component.html" />
+    <Content Include="app\Components\Templates\user.navbar.component.html" />
+    <Content Include="app\Components\Templates\visitor.navbar.component.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -221,16 +197,7 @@
     <Content Include="Content\materialize\css\materialize.min.css" />
     <Content Include="Content\materialize\font\material-design-icons\LICENSE.txt" />
     <Content Include="Content\materialize\font\material-design-icons\Material-Design-Icons.svg" />
-    <Content Include="DBContext\TravelAngularEntities.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TravelAngularEntities.edmx</DependentUpon>
-      <LastGenOutput>TravelAngularEntities.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="DBContext\TravelAngularEntities.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TravelAngularEntities.edmx</DependentUpon>
-      <LastGenOutput>TravelAngularEntities.cs</LastGenOutput>
-    </Content>
+    <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -292,14 +259,11 @@
     <Content Include="Content\materialize\fonts\roboto\Roboto-Bold.woff" />
     <Content Include="Content\materialize\fonts\roboto\Roboto-Bold.ttf" />
     <Content Include="Content\materialize\fonts\roboto\Roboto-Bold.eot" />
-    <EntityDeploy Include="DBContext\TravelAngularEntities.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TravelAngularEntities.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="DBContext\TravelAngularEntities.edmx.diagram">
-      <DependentUpon>TravelAngularEntities.edmx</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
@@ -337,7 +301,7 @@
     <Content Include="tsconfig.json" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
+    <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -350,8 +314,11 @@
     <TypeScriptCompile Include="app\app.component.ts" />
     <TypeScriptCompile Include="app\app.module.ts" />
     <TypeScriptCompile Include="app\app.routing.ts" />
+    <TypeScriptCompile Include="app\Components\admin.navbar.component.ts" />
     <TypeScriptCompile Include="app\Components\home.component.ts" />
     <TypeScriptCompile Include="app\Components\user.component.ts" />
+    <TypeScriptCompile Include="app\Components\user.navbar.component.ts" />
+    <TypeScriptCompile Include="app\Components\visitor.navbar.component.ts" />
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="app\Models\user.ts" />
     <TypeScriptCompile Include="app\Service\user.service.ts" />

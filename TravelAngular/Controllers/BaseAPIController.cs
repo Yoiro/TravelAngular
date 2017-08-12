@@ -12,7 +12,7 @@ namespace TravelAngular.Controllers
 {
     public class BaseAPIController : ApiController
     {
-        protected readonly TravelAngularEntities TravelDB = new TravelAngularEntities();
+        protected readonly TravelAngularContext TravelDB = TravelAngularContext.getInstance();
 
         protected HttpResponseMessage ToJson(dynamic obj)
         {

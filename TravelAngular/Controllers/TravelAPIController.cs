@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using TravelAngular.DBContext;
+using TravelAngular.Models.Classes;
 
 namespace TravelAngular.Controllers
 {

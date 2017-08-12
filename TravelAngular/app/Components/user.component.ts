@@ -8,16 +8,17 @@ import { Observable } from 'rxjs/Rx';
 import { Global } from '../Shared/global';
 
 @Component({
-    templateUrl: 'app/Components/user.component.html'
+    templateUrl: 'app/Components/Templates/user.component.html'
 })
 export class UserComponent implements OnInit {
 
     ngOnInit(): void {
         this.userFrm = this.fb.group({
             Id: [''],
+            Username: ['', Validators.required],
+            Password: ['', Validators.required],
             FirstName: ['', Validators.required],
-            LastName: [''],
-            Gender: ['']
+            LastName: ['', Validators.required]
         });
 
         this.LoadUsers();
@@ -32,6 +33,7 @@ export class UserComponent implements OnInit {
     dbops: DBOperation;
     modalTitle: string;
     modalBtnTitle: string;
+    
 
     constructor(private fb: FormBuilder, private _userService: UserService) { }
 
@@ -69,7 +71,7 @@ export class UserComponent implements OnInit {
     deleteUser(id: number) {
         this.dbops = DBOperation.delete;
         this.SetControlsState(false);
-        this.modalTitle = "Confirm to Delete?";
+        this.modalTitle = "Confirm Delete?";
         this.modalBtnTitle = "Delete";
         this.user = this.users.filter(x => x.Id == id)[0];
         this.userFrm.setValue(this.user);

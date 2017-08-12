@@ -7,8 +7,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var visitor_navbar_component_1 = require("./Components/visitor.navbar.component");
+var user_navbar_component_1 = require("./Components/user.navbar.component");
+var admin_navbar_component_1 = require("./Components/admin.navbar.component");
 var AppComponent = (function () {
     function AppComponent() {
+        this.logged = false;
+        this.asAdmin = false;
+        this.visitor = new visitor_navbar_component_1.VisitorNavbarComponent();
+        this.user = new user_navbar_component_1.UserNavbarComponent();
+        this.admin = new admin_navbar_component_1.AdminNavbarComponent();
     }
     return AppComponent;
 }());

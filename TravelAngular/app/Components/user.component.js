@@ -24,9 +24,10 @@ var UserComponent = (function () {
     UserComponent.prototype.ngOnInit = function () {
         this.userFrm = this.fb.group({
             Id: [''],
+            Username: ['', forms_1.Validators.required],
+            Password: ['', forms_1.Validators.required],
             FirstName: ['', forms_1.Validators.required],
-            LastName: [''],
-            Gender: ['']
+            LastName: ['', forms_1.Validators.required]
         });
         this.LoadUsers();
     };
@@ -59,7 +60,7 @@ var UserComponent = (function () {
     UserComponent.prototype.deleteUser = function (id) {
         this.dbops = enum_1.DBOperation.delete;
         this.SetControlsState(false);
-        this.modalTitle = "Confirm to Delete?";
+        this.modalTitle = "Confirm Delete?";
         this.modalBtnTitle = "Delete";
         this.user = this.users.filter(function (x) { return x.Id == id; })[0];
         this.userFrm.setValue(this.user);
@@ -121,7 +122,7 @@ __decorate([
 ], UserComponent.prototype, "modal", void 0);
 UserComponent = __decorate([
     core_1.Component({
-        templateUrl: 'app/Components/user.component.html'
+        templateUrl: 'app/Components/Templates/user.component.html'
     }),
     __metadata("design:paramtypes", [forms_1.FormBuilder, user_service_1.UserService])
 ], UserComponent);
