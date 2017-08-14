@@ -3,13 +3,14 @@
         <div class="nav-wrapper light-blue accent-3">
             <a href="#!" class="brand-logo">Travel Angular</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><p>Bienvenue, visiteur!</p></li>
                 <li><a [routerLink]="['home']">Home</a></li>
                 <li><a href="#">Travels</a></li>
                 <li></li>
                 <li></li>
                 <li></li>
                 <li></li>
-                <li><a href="#" class="button green accent-1">Log in</a></li>
+                <li><a [routerLink]="['login']" class="button green accent-1">Log in</a></li>
                 <li><a href="#" class="button green accent-1">Register</a></li>
             </ul>
         </div>

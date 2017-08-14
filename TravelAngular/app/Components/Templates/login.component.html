@@ -1,0 +1,12 @@
+﻿<div [formGroup]="logForm">
+    <div class="input-field">
+        <label>Username:</label>
+        <input type="text" class="form-control" formControlName="Username"/>
+    </div>
+    <div class="input-field">
+        <label>Password:</label>
+        <input type="password" class="form-control" formControlName="Password"/>
+    </div>
+    <a class="z-depth-0 waves-effect waves-light" (click)="redirectIndex()">Cancel</a>
+    <button type="submit" class="z-depth-0 waves-effect waves-light btn pink darken-1" (ngSubmit)="login(Username, Password)"></button>
+</div>

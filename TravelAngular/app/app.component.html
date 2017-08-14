@@ -1,5 +1,5 @@
 ﻿<navbar-def *ngIf="!logged"></navbar-def>
-<user-navbar *ngIf="!asAdmin"></user-navbar>
+<user-navbar *ngIf="logged && !asAdmin"></user-navbar>
 <admin-navbar *ngIf="asAdmin"></admin-navbar>
 
 <div class="col s12">
@@ -10,16 +10,18 @@
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
-                <h5 class="white-text">Footer Content</h5>
-                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                <h5 class="white-text">Travel Angular</h5>
+                <p class="grey-text text-lighten-4">Ce projet a été réalisé dans le cadre des cours "Technologies Internet", "Analyse et conduite de projet", et "Projet", dispensés par Messieurs P.Mercier et O.Palermo.
+                Ces cours sont dispensés pour les étudiants de 3e année de Bachelier en Informatique de gestion de la Haute Ecole de Louvain en Hainaut - Campus Mons.
+                </p>
             </div>
             <div class="col l4 offset-l2 s12">
                 <h5 class="white-text">Site réalisé avec</h5>
                 <ul>
-                    <li><a class="grey-text text-lighten-3" href="http://materializecss.com/about.html"> Materialize CSS </a></li>
-                    <li><a class="grey-text text-lighten-3" href="http://getbootstrap.com/"> Bootstrap </a></li>
-                    <li><a class="grey-text text-lighten-3" href="https://angular.io/"> Angular 2 </a></li>
-                    <li><a class="grey-text text-lighten-3" href="https://www.asp.net/"> ASP.NET </a></li>
+                    <li><a class="grey-text text-lighten-3" href="http://materializecss.com/about.html" target="_blank"> Materialize CSS </a></li>
+                    <li><a class="grey-text text-lighten-3" href="http://getbootstrap.com/" target="_blank"> Bootstrap </a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://angular.io/" target="_blank"> Angular 2 </a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://www.asp.net/" target="_blank"> ASP.NET </a></li>
                 </ul>
             </div>
         </div>

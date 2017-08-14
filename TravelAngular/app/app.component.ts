@@ -1,4 +1,4 @@
-﻿import { Component } from "@angular/core"
+﻿import { Component } from "@angular/core";
 import { Routes } from '@angular/router';
 import { VisitorNavbarComponent } from './Components/visitor.navbar.component';
 import { UserNavbarComponent } from './Components/user.navbar.component';
