@@ -13,6 +13,8 @@ export class LoginComponent implements OnInit {
     logForm: FormGroup;
     users: IUser[];
     msg: string;
+    un: string;
+    pw: string;
 
     //Override
     ngOnInit(): void {
@@ -42,9 +44,9 @@ export class LoginComponent implements OnInit {
     }
 
     /**
-     * Checks if values corresponds
+     * Checks if values corresponds on form's submit
      */
-    login(username: string, password: string) {
-        console.log(username, password);
+    onSubmit() {
+        console.log(this.un,this.pw);
     }
 }

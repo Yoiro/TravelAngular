@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Web.Http;
 using TravelAngular.DBContext;
 using TravelAngular.Models.Classes;
+using System.Diagnostics;
 
 namespace TravelAngular.Controllers
 {
@@ -14,6 +15,8 @@ namespace TravelAngular.Controllers
     {
         public HttpResponseMessage Get()
         {
+            Debug.WriteLine("GetTRAVELS\n" + TravelDB.Travels.AsEnumerable());
+            Debug.WriteLine("GetTRAVELS.JSON\n" + ToJson(TravelDB.Travels.AsEnumerable()));
             return ToJson(TravelDB.Travels.AsEnumerable());
         }
 

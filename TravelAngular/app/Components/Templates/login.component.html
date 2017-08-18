@@ -1,12 +1,15 @@
-﻿<div [formGroup]="logForm">
+﻿<form (ngSubmit)="onSubmit()" [formGroup]="logForm">
     <div class="input-field">
         <label>Username:</label>
-        <input type="text" class="form-control" formControlName="Username"/>
+        <input type="text" class="form-control" 
+               [(ngModel)]="un" formControlName="Username"/>
     </div>
     <div class="input-field">
         <label>Password:</label>
-        <input type="password" class="form-control" formControlName="Password"/>
+        <input type="password" class="form-control" 
+               [(ngModel)]="pw" formControlName="Password"/>
     </div>
-    <a class="z-depth-0 waves-effect waves-light" (click)="redirectIndex()">Cancel</a>
-    <button type="submit" class="z-depth-0 waves-effect waves-light btn pink darken-1" (ngSubmit)="login(Username, Password)"></button>
-</div>
+    <a class="z-depth-0 btn waves-effect waves-light pink lighten-1" (click)="redirectIndex()">Cancel</a>
+    <button type="submit"
+            class="z-depth-0 btn waves-effect waves-light pink darken-1" >Log In</button>
+</form>

@@ -10,20 +10,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var global_1 = require("./shared/global");
-var AppComponent = (function () {
-    function AppComponent() {
-        this.logged = global_1.Global.logged;
-        this.asAdmin = global_1.Global.asAdmin;
+var loader_service_1 = require("../Service/loader.service");
+var LoaderComponent = (function () {
+    function LoaderComponent(loaderService) {
+        this.loaderService = loaderService;
+        this.show = false;
     }
-    return AppComponent;
+    LoaderComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.subscription = this.loaderService.loaderState.subscribe(function (state) {
+            return _this.show = state.show;
+        });
+    };
+    LoaderComponent.prototype.ngOnDestroy = function () {
+        this.subscription.unsubscribe();
+    };
+    return LoaderComponent;
 }());
-AppComponent = __decorate([
+LoaderComponent = __decorate([
     core_1.Component({
-        selector: "travel-app",
-        templateUrl: 'app/app.component.html'
+        selector: 'loader',
+        templateUrl: './Templates/loader.component.html'
     }),
-    __metadata("design:paramtypes", [])
-], AppComponent);
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+    __metadata("design:paramtypes", [loader_service_1.LoaderService])
+], LoaderComponent);
+exports.LoaderComponent = LoaderComponent;
+//# sourceMappingURL=loader.component.js.map

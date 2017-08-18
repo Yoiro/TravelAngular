@@ -1,6 +1,6 @@
 ﻿<navbar-def *ngIf="!logged"></navbar-def>
 <user-navbar *ngIf="logged && !asAdmin"></user-navbar>
-<admin-navbar *ngIf="asAdmin"></admin-navbar>
+<!--<admin-navbar></admin-navbar>-->
 
 <div class="col s12">
     <router-outlet></router-outlet>
@@ -12,7 +12,7 @@
             <div class="col l6 s12">
                 <h5 class="white-text">Travel Angular</h5>
                 <p class="grey-text text-lighten-4">Ce projet a été réalisé dans le cadre des cours "Technologies Internet", "Analyse et conduite de projet", et "Projet", dispensés par Messieurs P.Mercier et O.Palermo.
-                Ces cours sont dispensés pour les étudiants de 3e année de Bachelier en Informatique de gestion de la Haute Ecole de Louvain en Hainaut - Campus Mons.
+                Ces cours sont donnés à l'attention des étudiants de 3e année de Bachelier en Informatique de gestion (Catégorie Economique) de la Haute Ecole de Louvain en Hainaut - Campus Mons.
                 </p>
             </div>
             <div class="col l4 offset-l2 s12">

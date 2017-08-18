@@ -1,31 +1,45 @@
-﻿<div *ngIf='users && users.length==0' class="alert alert-info" role="alert">No record found!</div>
-<table class='highlight responsive-table' *ngIf='users && users.length'>
+﻿<div *ngIf='travels && travels.length==0' class="alert alert-info" role="alert">No record found!</div>
+<table class='highlight responsive-table' *ngIf='travels && travels.length'>
     <thead>
         <tr>
-            <th>Username</th>
-            <th>Rating</th>
+            <th>Driver</th>
+            <th>Origin</th>
+            <th>Destination</th>
             <th></th>
+            <th>Departure</th>
+            <th>Edit</th>
+            <th>Delete</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let user of users">
-            <td>{{user.Username}}</td>
-            <td>{{user.Rating}}</td>
+        <tr *ngFor="let travel of travels">
+            <!-- Driver -->
+            <td>{{travel.Driver.Username}}</td>
+            <!-- Origin -->
+            <td>{{travel.Origin.Locality}}, {{travel.Origin.Country}}</td>
+            <!-- Destination -->
+            <td>{{travel.Destination.Locality}}, {{travel.Destination.Country}}<td>
+            <!-- Departure -->
+            <td>{{travel.Departure}}</td>
+            <!-- Edit -->
             <td>
-                <a class="btn-floating btn-large waves-effect waves-light blue" (click)="editUser(user.Id)"><i class="large material-icons">edit</i></a>
-                <a class="btn-floating btn-large waves-effect waves-light red" (click)="deleteUser(user.Id)"><i class="large material-icons">delete</i></a>
+                <a class="btn-floating btn-large waves-effect waves-light blue" (click)="editTravel(travel.Id)"><i class="large material-icons">edit</i></a>
+            </td>
+            <!-- Delete -->
+            <td>
+                <a class="btn-floating btn-large waves-effect waves-light red" (click)="deleteTravel(travel.Id)"><i class="large material-icons">delete</i></a>
             </td>
         </tr>
     </tbody>
 </table>
-<a class="z-depth-0 btn-large waves-effect waves-light green" (click)="addUser()"><i class="large material-icons right">add</i>Add a user</a>
+<a class="z-depth-0 btn-large waves-effect waves-light green" (click)="addTravel()"><i class="large material-icons right">add</i>Add a travel</a>
 <div *ngIf="msg" role="alert" class="alert alert-info alert-dismissible">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
     <span class="sr-only">Error:</span>
     {{msg}}
 </div>
-<modal #modal>
+<!--<modal #modal>
     <form novalidate (ngSubmit)="onSubmit(userFrm)" [formGroup]="userFrm">
         <modal-header [show-close]="true">
             <h4 class="modal-title">{{modalTitle}}</h4>
@@ -57,4 +71,4 @@
             </div>
         </modal-footer>
     </form>
-</modal>
+</modal>-->

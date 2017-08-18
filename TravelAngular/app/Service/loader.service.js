@@ -10,20 +10,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var global_1 = require("./shared/global");
-var AppComponent = (function () {
-    function AppComponent() {
-        this.logged = global_1.Global.logged;
-        this.asAdmin = global_1.Global.asAdmin;
+var Subject_1 = require("rxjs/Subject");
+var LoaderService = (function () {
+    function LoaderService() {
+        this.loaderSubject = new Subject_1.Subject();
+        this.loaderState = this.loaderSubject.asObservable();
     }
-    return AppComponent;
+    LoaderService.prototype.show = function () {
+        this.loaderSubject.next({ show: true });
+    };
+    LoaderService.prototype.hide = function () {
+        this.loaderSubject.next({ show: false });
+    };
+    return LoaderService;
 }());
-AppComponent = __decorate([
-    core_1.Component({
-        selector: "travel-app",
-        templateUrl: 'app/app.component.html'
-    }),
+LoaderService = __decorate([
+    core_1.Injectable(),
     __metadata("design:paramtypes", [])
-], AppComponent);
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+], LoaderService);
+exports.LoaderService = LoaderService;
+//# sourceMappingURL=loader.service.js.map

@@ -45,8 +45,8 @@ var LoginComponent = (function () {
     /**
      * Checks if values corresponds
      */
-    LoginComponent.prototype.login = function (username, password) {
-        console.log(username, password);
+    LoginComponent.prototype.onSubmit = function () {
+        console.log(this.un, this.pw);
     };
     return LoginComponent;
 }());

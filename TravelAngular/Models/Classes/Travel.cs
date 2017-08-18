@@ -10,12 +10,8 @@ namespace TravelAngular.Models.Classes
     {
         public Travel()
         {
-            Driver = new User();
             Places = 0;
-            Origin = new Address();
-            Destination = new Address();
             Escales = false;
-            Departure = DateTime.Now;
         }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }

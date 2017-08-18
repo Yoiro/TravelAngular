@@ -10,20 +10,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var global_1 = require("./shared/global");
-var AppComponent = (function () {
-    function AppComponent() {
-        this.logged = global_1.Global.logged;
-        this.asAdmin = global_1.Global.asAdmin;
+var http_1 = require("@angular/http");
+require("rxjs/add/operator/map");
+require("rxjs/add/operator/do");
+require("rxjs/add/operator/catch");
+var RegisterService = (function () {
+    function RegisterService(_http) {
+        this._http = _http;
     }
-    return AppComponent;
+    RegisterService.prototype.passwordValidation = function (AC) {
+        var password = AC.get('Password').value;
+        var check = AC.get('Passcheck').value;
+        if (password != check) {
+            return false;
+        }
+        return true;
+    };
+    return RegisterService;
 }());
-AppComponent = __decorate([
-    core_1.Component({
-        selector: "travel-app",
-        templateUrl: 'app/app.component.html'
-    }),
-    __metadata("design:paramtypes", [])
-], AppComponent);
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+RegisterService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http])
+], RegisterService);
+exports.RegisterService = RegisterService;
+//# sourceMappingURL=register.service.js.map

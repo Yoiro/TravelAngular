@@ -13,13 +13,21 @@ var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
 var app_component_1 = require("./app.component");
 var home_component_1 = require("./Components/home.component");
-var user_component_1 = require("./Components/user.component");
+var usersm_component_1 = require("./Components/usersm.component");
+var travelsm_component_1 = require("./Components/travelsm.component");
 var user_navbar_component_1 = require("./Components/user.navbar.component");
 var visitor_navbar_component_1 = require("./Components/visitor.navbar.component");
 var admin_navbar_component_1 = require("./Components/admin.navbar.component");
+var loader_component_1 = require("./Components/loader.component");
 var login_component_1 = require("./Components/login.component");
+var register_component_1 = require("./Components/register.component");
 var app_routing_1 = require("./app.routing");
 var user_service_1 = require("./Service/user.service");
+var loader_service_1 = require("./Service/loader.service");
+var auth_service_1 = require("./Service/auth.service");
+var travel_service_1 = require("./Service/travel.service");
+var address_service_1 = require("./Service/address.service");
+var register_service_1 = require("./Service/register.service");
 var ng2_bs3_modal_1 = require("ng2-bs3-modal/ng2-bs3-modal");
 var AppModule = (function () {
     function AppModule() {
@@ -29,11 +37,20 @@ var AppModule = (function () {
 AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, forms_1.ReactiveFormsModule, http_1.HttpModule, app_routing_1.routing, ng2_bs3_modal_1.Ng2Bs3ModalModule],
-        declarations: [app_component_1.AppComponent, home_component_1.HomeComponent, user_component_1.UserComponent,
+        declarations: [
+            app_component_1.AppComponent, home_component_1.HomeComponent, usersm_component_1.UsersMComponent,
             admin_navbar_component_1.AdminNavbarComponent, visitor_navbar_component_1.VisitorNavbarComponent, user_navbar_component_1.UserNavbarComponent,
-            login_component_1.LoginComponent
+            login_component_1.LoginComponent, loader_component_1.LoaderComponent, travelsm_component_1.TravelsMComponent,
+            register_component_1.RegisterComponent
         ],
-        providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/' }, user_service_1.UserService],
+        providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/' },
+            user_service_1.UserService,
+            travel_service_1.TravelService,
+            loader_service_1.LoaderService,
+            auth_service_1.AuthenticationService,
+            address_service_1.AddressService,
+            register_service_1.RegisterService
+        ],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);
