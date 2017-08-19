@@ -12,10 +12,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var router_1 = require("@angular/router");
+var register_service_1 = require("../Service/register.service");
 var RegisterComponent = (function () {
-    function RegisterComponent(fb, _router) {
+    function RegisterComponent(fb, _router, _registerService) {
         this.fb = fb;
         this._router = _router;
+        this._registerService = _registerService;
         this.checkPerson = false;
     }
     RegisterComponent.prototype.ngOnInit = function () {
@@ -37,7 +39,18 @@ var RegisterComponent = (function () {
         });
     };
     RegisterComponent.prototype.onSubmit = function () {
-        console.log("Submitting");
+        this.user.Username = this.regForm.get("Username").value;
+        this.user.Password = this.regForm.get("Password").value;
+        if (this.checkPerson) {
+            this.user.FirstName = this.personnal.get("FirstName").value;
+            this.user.LastName = this.personnal.get("LastName").value;
+        }
+        if (this.regForm.get("Passcheck").value === this.regForm.get("Password").value) {
+            //this._registerService.register();
+        }
+        else {
+            console.log("Registration error");
+        }
     };
     return RegisterComponent;
 }());
@@ -45,7 +58,7 @@ RegisterComponent = __decorate([
     core_1.Component({
         templateUrl: './Templates/register.component.html'
     }),
-    __metadata("design:paramtypes", [forms_1.FormBuilder, router_1.Router])
+    __metadata("design:paramtypes", [forms_1.FormBuilder, router_1.Router, register_service_1.RegisterService])
 ], RegisterComponent);
 exports.RegisterComponent = RegisterComponent;
 //# sourceMappingURL=register.component.js.map

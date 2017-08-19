@@ -3,27 +3,52 @@ import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
 import { Global } from '../shared/global';
+import { UserService } from './user.service';
+import { IUser } from '../Models/user';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
-export class AuthenticationService {
-    constructor(private http: Http) { }
+export class AuthenticationService{
+    users: IUser[];
+    //Sources
+    private log = new Subject<boolean>();
+    private admin = new Subject<boolean>();
+    private loggedUser = new Subject<IUser>();
+    //Streams
+    logged$ = this.log.asObservable();
+    asAdmin$ = this.admin.asObservable();
+    loggedUser$ = this.loggedUser.asObservable();
+
+    constructor(private http: Http, private _userService: UserService) {
+        this.users = new Array<IUser>();
+        this._userService.get(Global.BASE_USER_ENDPOINT)
+            .subscribe(users => { this.users = users });
+    }
 
     login(username: string, password: string) {
-        return this.http.post(Global.BASE_USER_ENDPOINT, JSON.stringify({ username: username, password: password }))
-            .map((response: Response) => {
-                // login successful if there's a jwt token in the response
-                let user = response.json();
-                if (user && user.token) {
-                    // store user details and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify(user));
+        var user = this.users.find(u => u.Username === username);
+        if (user != null) {
+            if (user.Password === password) {
+                localStorage.setItem("user", JSON.stringify(user));
+                this.log.next(true);
+                if (user.Username == "simon.degreve") {
+                    this.admin.next(true);
                 }
-
-                return user;
-            });
+                this.loggedUser.next(user);
+            }
+            else { console.log("Wrong password"); }
+        }
+        else { console.log("Wrong username"); }
     }
 
     logout() {
         // remove user from local storage to log user out
-        localStorage.removeItem('currentUser');
+        localStorage.removeItem("user");
+        this.log.next(false);
+        this.admin.next(false);
+    }
+
+    getState(): Observable<boolean>[] {
+        return [this.logged$, this.asAdmin$];
     }
 }

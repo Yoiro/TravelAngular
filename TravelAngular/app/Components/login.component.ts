@@ -1,6 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../Service/user.service';
+import { AuthenticationService } from '../Service/auth.service';
 import { IUser } from '../Models/user';
 import { Router } from '@angular/router';
 import { Global } from '../shared/global';
@@ -24,7 +25,8 @@ export class LoginComponent implements OnInit {
         });
     }
 
-    constructor(private fb: FormBuilder, private _userService: UserService, private _router: Router) { }
+    constructor(private fb: FormBuilder, private _userService: UserService,
+        private _authService: AuthenticationService, private _router: Router) { }
 
     //Methods
     /**
@@ -47,6 +49,7 @@ export class LoginComponent implements OnInit {
      * Checks if values corresponds on form's submit
      */
     onSubmit() {
-        console.log(this.un,this.pw);
+        this._authService.login(this.un, this.pw);
+        this.redirectIndex();
     }
 }

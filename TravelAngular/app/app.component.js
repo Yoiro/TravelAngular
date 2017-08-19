@@ -10,12 +10,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var global_1 = require("./shared/global");
+var auth_service_1 = require("./Service/auth.service");
 var AppComponent = (function () {
-    function AppComponent() {
-        this.logged = global_1.Global.logged;
-        this.asAdmin = global_1.Global.asAdmin;
+    function AppComponent(_authService) {
+        var _this = this;
+        this._authService = _authService;
+        this.subscriptionLog = this._authService.getState()[0].subscribe(function (log) { return _this.logged = log; });
+        this.subscriptionAd = this._authService.getState()[1].subscribe(function (ad) { return _this.asAdmin = ad; });
     }
+    AppComponent.prototype.ngOnDestroy = function () {
+        this.subscriptionLog.unsubscribe();
+        this.subscriptionAd.unsubscribe();
+    };
     return AppComponent;
 }());
 AppComponent = __decorate([
@@ -23,7 +29,7 @@ AppComponent = __decorate([
         selector: "travel-app",
         templateUrl: 'app/app.component.html'
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [auth_service_1.AuthenticationService])
 ], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

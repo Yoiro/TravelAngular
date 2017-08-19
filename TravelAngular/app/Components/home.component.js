@@ -14,7 +14,7 @@ var HomeComponent = (function () {
 }());
 HomeComponent = __decorate([
     core_1.Component({
-        template: "<img src=\"../../images/covoit.png\"/>"
+        templateUrl: './Templates/home.component.html'
     })
 ], HomeComponent);
 exports.HomeComponent = HomeComponent;

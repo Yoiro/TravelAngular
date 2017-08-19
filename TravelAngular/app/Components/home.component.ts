@@ -1,7 +1,7 @@
 ﻿import { Component } from "@angular/core";
 
 @Component({
-    template: `<img src="../../images/covoit.png"/>`
+    templateUrl: './Templates/home.component.html'
 })
 
 export class HomeComponent{

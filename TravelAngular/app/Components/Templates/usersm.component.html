@@ -1,6 +1,6 @@
 ﻿<div *ngIf='users && users.length==0' class="alert alert-info" role="alert">No record found!</div>
 <div *ngIf="indLoading; else elseblock"><loader></loader></div>
-<ng-template #elseblock>
+<ng-template #elseblock class="center-align">
     <table class='highlight responsive-table' *ngIf='users && users.length'>
         <thead>
             <tr>

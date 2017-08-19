@@ -1,8 +1,8 @@
-﻿<navbar-def *ngIf="!logged"></navbar-def>
-<user-navbar *ngIf="logged && !asAdmin"></user-navbar>
-<!--<admin-navbar></admin-navbar>-->
+﻿<navbar-def class="navbar" *ngIf="!logged"></navbar-def>
+<user-navbar class="navbar" *ngIf="logged && !asAdmin"></user-navbar>
+<admin-navbar class="navbar" *ngIf="logged && asAdmin"></admin-navbar>
 
-<div class="col s12">
+<div class="container">
     <router-outlet></router-outlet>
 </div>
 

@@ -12,12 +12,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var user_service_1 = require("../Service/user.service");
+var auth_service_1 = require("../Service/auth.service");
 var router_1 = require("@angular/router");
 var global_1 = require("../shared/global");
 var LoginComponent = (function () {
-    function LoginComponent(fb, _userService, _router) {
+    function LoginComponent(fb, _userService, _authService, _router) {
         this.fb = fb;
         this._userService = _userService;
+        this._authService = _authService;
         this._router = _router;
     }
     //Override
@@ -43,10 +45,11 @@ var LoginComponent = (function () {
             .subscribe(function (users) { _this.users = users; }, function (error) { return _this.msg = error; });
     };
     /**
-     * Checks if values corresponds
+     * Checks if values corresponds on form's submit
      */
     LoginComponent.prototype.onSubmit = function () {
-        console.log(this.un, this.pw);
+        this._authService.login(this.un, this.pw);
+        this.redirectIndex();
     };
     return LoginComponent;
 }());
@@ -54,7 +57,8 @@ LoginComponent = __decorate([
     core_1.Component({
         templateUrl: './Templates/login.component.html'
     }),
-    __metadata("design:paramtypes", [forms_1.FormBuilder, user_service_1.UserService, router_1.Router])
+    __metadata("design:paramtypes", [forms_1.FormBuilder, user_service_1.UserService,
+        auth_service_1.AuthenticationService, router_1.Router])
 ], LoginComponent);
 exports.LoginComponent = LoginComponent;
 //# sourceMappingURL=login.component.js.map

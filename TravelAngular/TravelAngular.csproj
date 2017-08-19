@@ -189,6 +189,7 @@
     <Content Include="app\app.component.html" />
     <Content Include="app\Components\Templates\address.component.html" />
     <Content Include="app\Components\Templates\admin.navbar.component.html" />
+    <Content Include="app\Components\Templates\home.component.html" />
     <Content Include="app\Components\Templates\loader.component.html" />
     <Content Include="app\Components\Templates\login.component.html" />
     <Content Include="app\Components\Templates\register.component.html" />
@@ -336,6 +337,8 @@
     <TypeScriptCompile Include="app\Models\loader.ts" />
     <TypeScriptCompile Include="app\Models\travel.ts" />
     <TypeScriptCompile Include="app\Models\user.ts" />
+    <TypeScriptCompile Include="app\Patterns\AbstractObservable.ts" />
+    <TypeScriptCompile Include="app\Patterns\AuthObserver.ts" />
     <TypeScriptCompile Include="app\Service\address.service.ts" />
     <TypeScriptCompile Include="app\Service\auth.service.ts" />
     <TypeScriptCompile Include="app\Service\loader.service.ts" />
