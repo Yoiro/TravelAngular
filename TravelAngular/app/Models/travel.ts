@@ -2,7 +2,7 @@
 import { IAddress } from './Address';
 
 export interface ITravel {
-    Id: number,
+    Id ?: number,
     Driver: IUser,
     Places: number,
     Origin: IAddress,

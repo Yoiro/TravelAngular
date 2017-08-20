@@ -22,7 +22,9 @@ namespace TravelAngular.Controllers
 
         public HttpResponseMessage Post([FromBody]Travel value)
         {
+            Debug.WriteLine("PostTRAVELS\n" + value);
             TravelDB.Travels.Add(value);
+            Debug.WriteLine("PostTRAVELS: All \n" + TravelDB.Travels.AsEnumerable());
             return ToJson(TravelDB.SaveChanges());
         }
 

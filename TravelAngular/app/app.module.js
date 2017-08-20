@@ -21,6 +21,8 @@ var admin_navbar_component_1 = require("./Components/admin.navbar.component");
 var loader_component_1 = require("./Components/loader.component");
 var login_component_1 = require("./Components/login.component");
 var register_component_1 = require("./Components/register.component");
+var address_component_1 = require("./Components/address.component");
+var addtravel_component_1 = require("./Components/addtravel.component");
 var app_routing_1 = require("./app.routing");
 var user_service_1 = require("./Service/user.service");
 var loader_service_1 = require("./Service/loader.service");
@@ -41,7 +43,7 @@ AppModule = __decorate([
             app_component_1.AppComponent, home_component_1.HomeComponent, usersm_component_1.UsersMComponent,
             admin_navbar_component_1.AdminNavbarComponent, visitor_navbar_component_1.VisitorNavbarComponent, user_navbar_component_1.UserNavbarComponent,
             login_component_1.LoginComponent, loader_component_1.LoaderComponent, travelsm_component_1.TravelsMComponent,
-            register_component_1.RegisterComponent
+            register_component_1.RegisterComponent, addtravel_component_1.AddTravelComponent, address_component_1.AddressComponent
         ],
         providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/' },
             user_service_1.UserService,

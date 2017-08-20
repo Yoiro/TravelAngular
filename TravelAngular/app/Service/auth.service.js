@@ -15,19 +15,15 @@ require("rxjs/add/operator/map");
 var global_1 = require("../shared/global");
 var user_service_1 = require("./user.service");
 var Subject_1 = require("rxjs/Subject");
-var AuthenticationService = (function () {
+var AuthenticationService = AuthenticationService_1 = (function () {
     function AuthenticationService(http, _userService) {
         var _this = this;
         this.http = http;
         this._userService = _userService;
-        //Sources
-        this.log = new Subject_1.Subject();
-        this.admin = new Subject_1.Subject();
-        this.loggedUser = new Subject_1.Subject();
         //Streams
-        this.logged$ = this.log.asObservable();
-        this.asAdmin$ = this.admin.asObservable();
-        this.loggedUser$ = this.loggedUser.asObservable();
+        this.logged$ = AuthenticationService_1.log.asObservable();
+        this.asAdmin$ = AuthenticationService_1.admin.asObservable();
+        this.loggedUser$ = AuthenticationService_1.loggedUser.asObservable();
         this.users = new Array();
         this._userService.get(global_1.Global.BASE_USER_ENDPOINT)
             .subscribe(function (users) { _this.users = users; });
@@ -37,11 +33,11 @@ var AuthenticationService = (function () {
         if (user != null) {
             if (user.Password === password) {
                 localStorage.setItem("user", JSON.stringify(user));
-                this.log.next(true);
+                AuthenticationService_1.log.next(true);
                 if (user.Username == "simon.degreve") {
-                    this.admin.next(true);
+                    AuthenticationService_1.admin.next(true);
                 }
-                this.loggedUser.next(user);
+                AuthenticationService_1.loggedUser.next(user);
             }
             else {
                 console.log("Wrong password");
@@ -54,17 +50,22 @@ var AuthenticationService = (function () {
     AuthenticationService.prototype.logout = function () {
         // remove user from local storage to log user out
         localStorage.removeItem("user");
-        this.log.next(false);
-        this.admin.next(false);
+        AuthenticationService_1.log.next(false);
+        AuthenticationService_1.admin.next(false);
     };
     AuthenticationService.prototype.getState = function () {
         return [this.logged$, this.asAdmin$];
     };
     return AuthenticationService;
 }());
-AuthenticationService = __decorate([
+//Sources
+AuthenticationService.log = new Subject_1.Subject();
+AuthenticationService.admin = new Subject_1.Subject();
+AuthenticationService.loggedUser = new Subject_1.Subject();
+AuthenticationService = AuthenticationService_1 = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [http_1.Http, user_service_1.UserService])
 ], AuthenticationService);
 exports.AuthenticationService = AuthenticationService;
+var AuthenticationService_1;
 //# sourceMappingURL=auth.service.js.map

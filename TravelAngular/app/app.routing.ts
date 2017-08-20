@@ -5,6 +5,7 @@ import { UsersMComponent } from './Components/usersm.component';
 import { TravelsMComponent } from './Components/travelsm.component';
 import { LoginComponent } from './Components/login.component';
 import { RegisterComponent } from './Components/register.component';
+import { AddTravelComponent } from './Components/addtravel.component';
 
 const appRoutes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -13,7 +14,7 @@ const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'travelsm', component: TravelsMComponent },
     { path: 'register', component: RegisterComponent },
-    { path: '**', redirectTo: 'home' }
+    { path: 'travelsm/add', component: AddTravelComponent }
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

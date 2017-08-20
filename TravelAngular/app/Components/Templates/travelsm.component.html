@@ -32,7 +32,7 @@
         </tr>
     </tbody>
 </table>
-<a class="z-depth-0 btn-large waves-effect waves-light green" (click)="addTravel()"><i class="large material-icons right">add</i>Add a travel</a>
+<a class="z-depth-0 btn-large waves-effect waves-light green" [routerLink]="['add']"><i class="large material-icons right">add</i>Add a travel</a>
 <div *ngIf="msg" role="alert" class="alert alert-info alert-dismissible">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>

@@ -19,12 +19,4 @@ export class AddressComponent implements OnInit {
 
     constructor(private fb: FormBuilder, private _addressService: AddressService){ }
     addGroup: FormGroup;
-
-    submit(): void {
-        console.log(this.addGroup.get("Road"));
-        console.log(this.addGroup.get("Number"));
-        console.log(this.addGroup.get("City"));
-        console.log(this.addGroup.get("Zipcode"));
-        console.log(this.addGroup.get("Country"));
-    }
 }

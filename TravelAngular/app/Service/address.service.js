@@ -22,7 +22,6 @@ var AddressService = (function () {
     AddressService.prototype.get = function (url) {
         return this._http.get(url)
             .map(function (response) { return response.json(); })
-            .do(function (data) { return console.log("All: " + JSON.stringify(data)); })
             .catch(this.handleError);
     };
     AddressService.prototype.post = function (url, model) {

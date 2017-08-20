@@ -12,7 +12,6 @@ export class AddressService {
     get(url: string): Observable<any> {
         return this._http.get(url)
             .map((response: Response) => <any>response.json())
-            .do(data => console.log("All: " + JSON.stringify(data)))
             .catch(this.handleError);
     }
 

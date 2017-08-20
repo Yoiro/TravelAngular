@@ -188,6 +188,7 @@
   <ItemGroup>
     <Content Include="app\app.component.html" />
     <Content Include="app\Components\Templates\address.component.html" />
+    <Content Include="app\Components\Templates\addtravel.component.html" />
     <Content Include="app\Components\Templates\admin.navbar.component.html" />
     <Content Include="app\Components\Templates\home.component.html" />
     <Content Include="app\Components\Templates\loader.component.html" />
@@ -323,6 +324,7 @@
     <TypeScriptCompile Include="app\app.module.ts" />
     <TypeScriptCompile Include="app\app.routing.ts" />
     <TypeScriptCompile Include="app\Components\address.component.ts" />
+    <TypeScriptCompile Include="app\Components\addtravel.component.ts" />
     <TypeScriptCompile Include="app\Components\admin.navbar.component.ts" />
     <TypeScriptCompile Include="app\Components\home.component.ts" />
     <TypeScriptCompile Include="app\Components\loader.component.ts" />

@@ -14,6 +14,7 @@ import { LoaderComponent } from './Components/loader.component';
 import { LoginComponent } from './Components/login.component';
 import { RegisterComponent } from './Components/register.component';
 import { AddressComponent } from './Components/address.component';
+import { AddTravelComponent } from './Components/addtravel.component';
 import { routing } from './app.routing';
 import { UserService } from './Service/user.service';
 import { LoaderService } from './Service/loader.service';
@@ -30,7 +31,7 @@ import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
         AppComponent, HomeComponent, UsersMComponent,
         AdminNavbarComponent, VisitorNavbarComponent, UserNavbarComponent,
         LoginComponent, LoaderComponent, TravelsMComponent,
-        RegisterComponent
+        RegisterComponent, AddTravelComponent, AddressComponent
     ],
     providers: [{ provide: APP_BASE_HREF, useValue: '/' },
         UserService,

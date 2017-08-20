@@ -11,13 +11,13 @@ import { Subject } from 'rxjs/Subject';
 export class AuthenticationService{
     users: IUser[];
     //Sources
-    private log = new Subject<boolean>();
-    private admin = new Subject<boolean>();
-    private loggedUser = new Subject<IUser>();
+    private static log = new Subject<boolean>();
+    private static admin = new Subject<boolean>();
+    private static loggedUser = new Subject<IUser>();
     //Streams
-    logged$ = this.log.asObservable();
-    asAdmin$ = this.admin.asObservable();
-    loggedUser$ = this.loggedUser.asObservable();
+    logged$ = AuthenticationService.log.asObservable();
+    asAdmin$ = AuthenticationService.admin.asObservable();
+    loggedUser$ = AuthenticationService.loggedUser.asObservable();
 
     constructor(private http: Http, private _userService: UserService) {
         this.users = new Array<IUser>();
@@ -30,11 +30,11 @@ export class AuthenticationService{
         if (user != null) {
             if (user.Password === password) {
                 localStorage.setItem("user", JSON.stringify(user));
-                this.log.next(true);
+                AuthenticationService.log.next(true);
                 if (user.Username == "simon.degreve") {
-                    this.admin.next(true);
+                    AuthenticationService.admin.next(true);
                 }
-                this.loggedUser.next(user);
+                AuthenticationService.loggedUser.next(user);
             }
             else { console.log("Wrong password"); }
         }
@@ -44,8 +44,8 @@ export class AuthenticationService{
     logout() {
         // remove user from local storage to log user out
         localStorage.removeItem("user");
-        this.log.next(false);
-        this.admin.next(false);
+        AuthenticationService.log.next(false);
+        AuthenticationService.admin.next(false);
     }
 
     getState(): Observable<boolean>[] {
