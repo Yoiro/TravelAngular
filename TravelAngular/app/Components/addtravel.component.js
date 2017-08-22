@@ -15,12 +15,14 @@ var travel_service_1 = require("../Service/travel.service");
 var address_service_1 = require("../Service/address.service");
 var forms_1 = require("@angular/forms");
 var Global_1 = require("../shared/Global");
+var router_1 = require("@angular/router");
 var AddTravelComponent = (function () {
-    function AddTravelComponent(fb, _travelService, _authenticationService, _addressService) {
+    function AddTravelComponent(fb, _travelService, _authenticationService, _addressService, _router) {
         this.fb = fb;
         this._travelService = _travelService;
         this._authenticationService = _authenticationService;
         this._addressService = _addressService;
+        this._router = _router;
         this.origin = {};
         this.destination = {};
         this.driver = JSON.parse(localStorage.getItem("user"));
@@ -43,7 +45,10 @@ var AddTravelComponent = (function () {
             Places: [0, forms_1.Validators.required]
         });
     };
-    AddTravelComponent.prototype.onsubmit = function () {
+    AddTravelComponent.prototype.redirectToIndex = function () {
+        this._router.navigate(['']);
+    };
+    AddTravelComponent.prototype.onSubmit = function () {
         if (this.driver == null) {
             alert("You must be logged in in order to post travels");
             return;
@@ -61,20 +66,25 @@ var AddTravelComponent = (function () {
         this.destination.Zipcode = this.travelForm.get("DestinationZipcode").value;
         this.destination.Locality = this.travelForm.get("DestinationCity").value;
         //assign date & time of departure
-        var date = new Date(this.travelForm.get("Date").value + this.travelForm.get("Time").value);
+        var re = /(\/+)|(\-+)|(\\+)/g;
+        var date = this.travelForm.get("Date").value.toString().replace(re, "-");
+        var time = this.travelForm.get("Time").value.toString();
+        var dateTime = new Date(date + " " + time);
+        console.log(dateTime);
         //post everything
         this.travel = {
             Origin: this.origin,
-            Departure: date,
+            Departure: dateTime,
             Destination: this.destination,
             Driver: this.driver,
             Escales: this.travelForm.get("Escales").value,
             Places: this.travelForm.get("Places").value
         };
         this._travelService.post(Global_1.Global.BASE_TRAVEL_ENDPOINT, this.travel);
-        this._addressService.post(Global_1.Global.BASE_ADDRESS_ENDPOINT, this.origin);
-        this._addressService.post(Global_1.Global.BASE_ADDRESS_ENDPOINT, this.destination);
-        alert("Submit submitted!");
+        /*this._addressService.post(Global.BASE_ADDRESS_ENDPOINT, this.origin);
+        this._addressService.post(Global.BASE_ADDRESS_ENDPOINT, this.destination);
+        */
+        this.redirectToIndex();
     };
     return AddTravelComponent;
 }());
@@ -85,7 +95,8 @@ AddTravelComponent = __decorate([
     __metadata("design:paramtypes", [forms_1.FormBuilder,
         travel_service_1.TravelService,
         auth_service_1.AuthenticationService,
-        address_service_1.AddressService])
+        address_service_1.AddressService,
+        router_1.Router])
 ], AddTravelComponent);
 exports.AddTravelComponent = AddTravelComponent;
 //# sourceMappingURL=addtravel.component.js.map

@@ -1,4 +1,5 @@
 ﻿import { Component, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { AuthenticationService } from '../Service/auth.service';
 import { ITravel } from '../Models/travel';
 import { IUser } from '../Models/user';
@@ -7,6 +8,7 @@ import { AddressService } from '../Service/address.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Global } from '../shared/Global';
 import { IAddress } from '../Models/address';
+import { Router } from '@angular/router';
 
 @Component({
     templateUrl: './Templates/addtravel.component.html'
@@ -21,7 +23,8 @@ export class AddTravelComponent implements OnInit {
     constructor(private fb: FormBuilder,
         private _travelService: TravelService,
         private _authenticationService: AuthenticationService,
-        private _addressService: AddressService
+        private _addressService: AddressService,
+        private _router: Router
     )
     {
         this.driver = JSON.parse(localStorage.getItem("user"));
@@ -47,7 +50,11 @@ export class AddTravelComponent implements OnInit {
         
     }
 
-    onsubmit() {
+    redirectToIndex() {
+        this._router.navigate(['']);
+    }
+
+    onSubmit() {
         if (this.driver == null) {
             alert("You must be logged in in order to post travels");
             return;
@@ -65,18 +72,24 @@ export class AddTravelComponent implements OnInit {
         this.destination.Zipcode = this.travelForm.get("DestinationZipcode").value;
         this.destination.Locality = this.travelForm.get("DestinationCity").value;
         //assign date & time of departure
-        var date = new Date(this.travelForm.get("Date").value + this.travelForm.get("Time").value);
+        var re = /(\/+)|(\-+)|(\\+)/g;
+        var date = this.travelForm.get("Date").value.toString().replace(re, "-");
+        var time = this.travelForm.get("Time").value.toString();
+        var dateTime = new Date(date + " " + time);
+        console.log(dateTime);
         //post everything
         this.travel = {
             Origin: this.origin,
-            Departure: date,
+            Departure: dateTime,
             Destination: this.destination,
             Driver: this.driver,
             Escales: this.travelForm.get("Escales").value,
             Places: this.travelForm.get("Places").value
-        };
-        this._addressService.post(Global.BASE_ADDRESS_ENDPOINT, this.origin);
-        this._addressService.post(Global.BASE_ADDRESS_ENDPOINT, this.destination);
+        }
         this._travelService.post(Global.BASE_TRAVEL_ENDPOINT, this.travel);
+        /*this._addressService.post(Global.BASE_ADDRESS_ENDPOINT, this.origin);
+        this._addressService.post(Global.BASE_ADDRESS_ENDPOINT, this.destination);
+        */
+        this.redirectToIndex();
     }
 }

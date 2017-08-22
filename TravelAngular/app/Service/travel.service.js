@@ -28,7 +28,6 @@ var TravelService = (function () {
         var body = JSON.stringify(model);
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
-        alert("Travel added...?");
         return this._http.post(url, body, options)
             .map(function (response) { return response.json(); })
             .catch(this.handleError);
