@@ -2,17 +2,21 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var router_1 = require("@angular/router");
 var home_component_1 = require("./Components/home.component");
-var usersm_component_1 = require("./Components/usersm.component");
-var travelsm_component_1 = require("./Components/travelsm.component");
+var users_management_component_1 = require("./Components/users.management.component");
+var travels_management_component_1 = require("./Components/travels.management.component");
 var login_component_1 = require("./Components/login.component");
 var register_component_1 = require("./Components/register.component");
 var addtravel_component_1 = require("./Components/addtravel.component");
+var travels_component_1 = require("./Components/travels.component");
 var appRoutes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: home_component_1.HomeComponent },
-    { path: 'usersm', component: usersm_component_1.UsersMComponent },
+    { path: 'usersm', component: users_management_component_1.UsersMComponent },
     { path: 'login', component: login_component_1.LoginComponent },
-    { path: 'travelsm', component: travelsm_component_1.TravelsMComponent },
+    { path: 'travelsm', component: travels_management_component_1.TravelsMComponent },
+    { path: 'travels', component: travels_component_1.TravelsComponent },
+    //{ path: 'travel/:id', component: TravelComponent },
+    //{ path: 'travels/add', component: AddTravelComponent },
     { path: 'register', component: register_component_1.RegisterComponent },
     { path: 'travelsm/add', component: addtravel_component_1.AddTravelComponent }
 ];

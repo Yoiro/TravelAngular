@@ -5,8 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './Components/home.component';
-import { UsersMComponent } from './Components/usersm.component';
-import { TravelsMComponent } from './Components/travelsm.component';
+import { UsersMComponent } from './Components/users.management.component';
+import { TravelsMComponent } from './Components/travels.management.component';
 import { UserNavbarComponent } from './Components/user.navbar.component';
 import { VisitorNavbarComponent } from './Components/visitor.navbar.component';
 import { AdminNavbarComponent } from './Components/admin.navbar.component';
@@ -15,6 +15,7 @@ import { LoginComponent } from './Components/login.component';
 import { RegisterComponent } from './Components/register.component';
 import { AddressComponent } from './Components/address.component';
 import { AddTravelComponent } from './Components/addtravel.component';
+import { TravelsComponent } from './Components/travels.component';
 import { routing } from './app.routing';
 import { UserService } from './Service/user.service';
 import { LoaderService } from './Service/loader.service';
@@ -31,7 +32,8 @@ import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
         AppComponent, HomeComponent, UsersMComponent,
         AdminNavbarComponent, VisitorNavbarComponent, UserNavbarComponent,
         LoginComponent, LoaderComponent, TravelsMComponent,
-        RegisterComponent, AddTravelComponent, AddressComponent
+        RegisterComponent, AddTravelComponent, AddressComponent,
+        TravelsComponent
     ],
     providers: [{ provide: APP_BASE_HREF, useValue: '/' },
         UserService,

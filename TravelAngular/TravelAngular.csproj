@@ -194,8 +194,9 @@
     <Content Include="app\Components\Templates\loader.component.html" />
     <Content Include="app\Components\Templates\login.component.html" />
     <Content Include="app\Components\Templates\register.component.html" />
-    <Content Include="app\Components\Templates\travelsm.component.html" />
-    <Content Include="app\Components\Templates\usersm.component.html" />
+    <Content Include="app\Components\Templates\travels.component.html" />
+    <Content Include="app\Components\Templates\travels.management.component.html" />
+    <Content Include="app\Components\Templates\users.management.component.html" />
     <Content Include="app\Components\Templates\user.navbar.component.html" />
     <Content Include="app\Components\Templates\visitor.navbar.component.html" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -330,8 +331,9 @@
     <TypeScriptCompile Include="app\Components\loader.component.ts" />
     <TypeScriptCompile Include="app\Components\login.component.ts" />
     <TypeScriptCompile Include="app\Components\register.component.ts" />
-    <TypeScriptCompile Include="app\Components\travelsm.component.ts" />
-    <TypeScriptCompile Include="app\Components\usersm.component.ts" />
+    <TypeScriptCompile Include="app\Components\travels.component.ts" />
+    <TypeScriptCompile Include="app\Components\travels.management.component.ts" />
+    <TypeScriptCompile Include="app\Components\users.management.component.ts" />
     <TypeScriptCompile Include="app\Components\user.navbar.component.ts" />
     <TypeScriptCompile Include="app\Components\visitor.navbar.component.ts" />
     <TypeScriptCompile Include="app\main.ts" />

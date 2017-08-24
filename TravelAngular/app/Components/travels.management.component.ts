@@ -12,7 +12,7 @@ import { Observable } from 'rxjs/Rx';
 import { Global } from '../Shared/global';
 
 @Component({
-    templateUrl: './Templates/travelsm.component.html',
+    templateUrl: './Templates/travels.management.component.html',
     providers: [UserService, AddressService]
 })
 export class TravelsMComponent implements OnInit {

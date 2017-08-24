@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Rx';
 import { Global } from '../Shared/global';
 
 @Component({
-    templateUrl: 'app/Components/Templates/usersm.component.html'
+    templateUrl: 'app/Components/Templates/users.management.component.html'
 })
 export class UsersMComponent implements OnInit {
 
@@ -31,5 +31,10 @@ export class UsersMComponent implements OnInit {
 
     addUser() {
         this.dbops = DBOperation.create;
+    }
+
+    deleteUser() {
+        this.dbops = DBOperation.delete;
+
     }
 }

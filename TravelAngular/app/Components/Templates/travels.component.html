@@ -1,0 +1,36 @@
+﻿<div *ngIf='travels && travels.length==0' class="alert alert-info" role="alert">No record found!</div>
+<table class='highlight responsive-table' *ngIf='travels && travels.length'>
+    <thead>
+        <tr>
+            <th>Driver</th>
+            <th>Origin</th>
+            <th>Destination</th>
+            <th></th>
+            <th>Departure</th>
+            <th>Subscribe</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let travel of travels">
+            <!-- Driver -->
+            <td>{{travel.Driver.Username}}</td>
+            <!-- Origin -->
+            <td>{{travel.Origin.Locality}}, {{travel.Origin.Country}}</td>
+            <!-- Destination -->
+            <td>{{travel.Destination.Locality}}, {{travel.Destination.Country}}</td>
+            <!-- Departure -->
+            <td>{{travel.Departure}}</td>
+            <!-- Subscribe to the travel -->
+            <td>
+                <a class="btn-floating btn-large waves-effect waves-light blue" (click)="subscribeToTravel(travel.Id)"><i class="large material-icons">directions_car</i></a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<a class="z-depth-0 btn-large waves-effect waves-light green" [routerLink]="['add']"><i class="large material-icons right">add</i>Add a travel</a>
+<div *ngIf="msg" role="alert" class="alert alert-info alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <span class="sr-only">Error:</span>
+    {{msg}}
+</div>
