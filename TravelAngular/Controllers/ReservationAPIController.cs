@@ -10,27 +10,27 @@ using TravelAngular.Models.Classes;
 
 namespace TravelAngular.Controllers
 {
-    public class PrivateMessageAPIController : BaseAPIController
+    public class ReservationAPIController : BaseAPIController
     {
         public HttpResponseMessage Get()
         {
-            return ToJson(TravelDB.PrivateMessages.AsEnumerable());
+            return ToJson(TravelDB.Reservations.AsEnumerable());
         }
 
-        public HttpResponseMessage Post([FromBody]PrivateMessage value)
+        public HttpResponseMessage Post([FromBody]Reservation value)
         {
-            TravelDB.PrivateMessages.Add(value);
+            TravelDB.Reservations.Add(value);
             return ToJson(TravelDB.SaveChanges());
         }
 
-        public HttpResponseMessage Put(int id, [FromBody]PrivateMessage value)
+        public HttpResponseMessage Put(int id, [FromBody]Reservation value)
         {
             TravelDB.Entry(value).State = EntityState.Modified;
             return ToJson(TravelDB.SaveChanges());
         }
         public HttpResponseMessage Delete(int id)
         {
-            TravelDB.PrivateMessages.Remove(TravelDB.PrivateMessages.FirstOrDefault(x => x.Id == id));
+            TravelDB.Reservations.Remove(TravelDB.Reservations.FirstOrDefault(x => x.Id == id));
             return ToJson(TravelDB.SaveChanges());
         }
     }

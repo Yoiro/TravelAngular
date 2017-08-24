@@ -170,7 +170,7 @@
     <Compile Include="Controllers\BaseAPIController.cs" />
     <Compile Include="Controllers\CommentAPIController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PrivateMessageAPIController.cs" />
+    <Compile Include="Controllers\ReservationAPIController.cs" />
     <Compile Include="Controllers\TravelAPIController.cs" />
     <Compile Include="Controllers\UserAPIController.cs" />
     <Compile Include="DBContext\DbFiller.cs" />
@@ -180,7 +180,7 @@
     </Compile>
     <Compile Include="Models\Classes\Address.cs" />
     <Compile Include="Models\Classes\Comment.cs" />
-    <Compile Include="Models\Classes\PrivateMessage.cs" />
+    <Compile Include="Models\Classes\Reservation.cs" />
     <Compile Include="Models\Classes\Travel.cs" />
     <Compile Include="Models\Classes\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -339,6 +339,7 @@
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="app\Models\address.ts" />
     <TypeScriptCompile Include="app\Models\loader.ts" />
+    <TypeScriptCompile Include="app\Models\reservation.ts" />
     <TypeScriptCompile Include="app\Models\travel.ts" />
     <TypeScriptCompile Include="app\Models\user.ts" />
     <TypeScriptCompile Include="app\Patterns\AbstractObservable.ts" />

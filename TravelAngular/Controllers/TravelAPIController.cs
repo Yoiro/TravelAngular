@@ -20,6 +20,11 @@ namespace TravelAngular.Controllers
             return ToJson(TravelDB.Travels.AsEnumerable());
         }
 
+        public HttpResponseMessage Get(long id)
+        {
+            return ToJson(TravelDB.Travels.Find(id));
+        }
+
         public HttpResponseMessage Post([FromBody]Travel value)
         {
             Debug.WriteLine("PostTRAVELS\n" + value);

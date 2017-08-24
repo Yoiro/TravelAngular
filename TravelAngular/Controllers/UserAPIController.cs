@@ -17,6 +17,11 @@ namespace TravelAngular.Controllers
             return ToJson(TravelDB.Users.AsEnumerable());
         }
 
+        public HttpResponseMessage Get(long id)
+        {
+            return ToJson(TravelDB.Users.Find(id));
+        }
+
         public HttpResponseMessage Post([FromBody]User value)
         {
             TravelDB.Users.Add(value);

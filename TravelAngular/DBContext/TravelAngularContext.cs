@@ -30,8 +30,8 @@ namespace TravelAngular.DBContext
         public static TravelAngularContext instance;
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Comment> Comments { get; set; }
-        public DbSet<PrivateMessage> PrivateMessages { get; set; }
         public DbSet<Travel> Travels { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
     }
 }

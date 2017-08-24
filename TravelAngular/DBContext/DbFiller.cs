@@ -26,12 +26,12 @@ namespace TravelAngular.DBContext
                 Address ad6 = new Address() { Locality = "Liège", Num = "6", Road = "Place de la Cathédrale", Zipcode = 4000 };
                 Address ad7 = new Address() { Locality = "Liège", Num = "16", Road = "Rue des Célestinnes", Zipcode = 4000 };
 
-                Travel t1 = new Travel() { Driver = usr, Origin = ad1, Destination = ad2, Departure = DateTime.Parse("22/08/2017 07:30:00") };
-                Travel t2 = new Travel() { Driver = usr, Origin = ad2, Destination = ad1, Departure = DateTime.Parse("31/08/2017 13:00:00") };
-                Travel t3 = new Travel() { Driver = usr1, Origin = ad3, Destination = ad4, Departure = DateTime.Parse("25/08/2017 14:00:00") };
-                Travel t4 = new Travel() { Driver = usr2, Origin = ad1, Destination = ad2, Departure = DateTime.Parse("18/09/2017 12:30:00") };
-                Travel t5 = new Travel() { Driver = usr3, Origin = ad6, Destination = ad2, Escales = true, Departure = DateTime.Parse("25/10/2017 10:00:00") };
-                Travel t6 = new Travel() { Driver = usr4, Origin = ad5, Destination = ad7, Departure = DateTime.Parse("01/12/2017 16:00:00") };
+                Travel t1 = new Travel() { Driver = usr, Origin = ad1, Destination = ad2, Departure = DateTime.Parse("22/08/2017 07:30:00").ToLocalTime() };
+                Travel t2 = new Travel() { Driver = usr, Origin = ad2, Destination = ad1, Departure = DateTime.Parse("31/08/2017 13:00:00").ToLocalTime() };
+                Travel t3 = new Travel() { Driver = usr1, Origin = ad3, Destination = ad4, Departure = DateTime.Parse("25/08/2017 14:00:00").ToLocalTime() };
+                Travel t4 = new Travel() { Driver = usr2, Origin = ad1, Destination = ad2, Departure = DateTime.Parse("18/09/2017 12:30:00").ToLocalTime() };
+                Travel t5 = new Travel() { Driver = usr3, Origin = ad6, Destination = ad2, Escales = true, Departure = DateTime.Parse("25/10/2017 10:00:00").ToLocalTime() };
+                Travel t6 = new Travel() { Driver = usr4, Origin = ad5, Destination = ad7, Departure = DateTime.Parse("01/12/2017 16:00:00").ToLocalTime() };
 
                 ctx.Users.Add(usr);
                 ctx.Users.Add(usr1);

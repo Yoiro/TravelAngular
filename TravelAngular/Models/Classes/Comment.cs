@@ -15,7 +15,14 @@ namespace TravelAngular.Models.Classes
         }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public User Writer { get; set; }
         public string Content { get; set; }
+
+        public int WriterId { get; set; }
+        public int ReceiverId { get; set; }
+
+        [ForeignKey("WriterId")]
+        public virtual User Writer { get; set; }
+        [ForeignKey("ReceiverId")]
+        public virtual User Receiver { get; set; }
     }
 }
