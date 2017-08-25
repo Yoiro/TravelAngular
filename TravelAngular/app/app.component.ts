@@ -15,12 +15,10 @@ import { Subscription } from 'rxjs/Subscription';
 export class AppComponent implements OnDestroy {
     logged: boolean;
     asAdmin: boolean;
-    subscriptionLog: Subscription;
-    subscriptionAd: Subscription;
 
     constructor(private _authService: AuthenticationService) {
-        this.subscriptionLog = this._authService.getState()[0].subscribe(log => this.logged = log);
-        this.subscriptionAd = this._authService.getState()[1].subscribe(ad => this.asAdmin = ad);
+        this._authService.getState()[0].subscribe(log => this.logged = log);
+        this._authService.getState()[1].subscribe(ad => this.asAdmin = ad);
         var usr = JSON.parse(localStorage.getItem("user"));
         if (usr != null) {
             this.logged = true;
@@ -31,8 +29,6 @@ export class AppComponent implements OnDestroy {
     }
 
     ngOnDestroy() {
-        this.subscriptionLog.unsubscribe();
-        this.subscriptionAd.unsubscribe();
         if (JSON.parse(localStorage.getItem("user")) != null) {
             localStorage.removeItem("user");
         }

@@ -16,6 +16,7 @@ import { RegisterComponent } from './Components/register.component';
 import { AddressComponent } from './Components/address.component';
 import { AddTravelComponent } from './Components/addtravel.component';
 import { TravelsComponent } from './Components/travels.component';
+import { UserComponent } from './Components/user.component';
 import { routing } from './app.routing';
 import { UserService } from './Service/user.service';
 import { LoaderService } from './Service/loader.service';
@@ -24,6 +25,7 @@ import { TravelService } from './Service/travel.service';
 import { AddressService } from './Service/address.service';
 import { RegisterService } from './Service/register.service';
 import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
+import { ReservationService } from './Service/reservation.service';
 
 
 @NgModule({
@@ -33,7 +35,7 @@ import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
         AdminNavbarComponent, VisitorNavbarComponent, UserNavbarComponent,
         LoginComponent, LoaderComponent, TravelsMComponent,
         RegisterComponent, AddTravelComponent, AddressComponent,
-        TravelsComponent
+        TravelsComponent, UserComponent
     ],
     providers: [{ provide: APP_BASE_HREF, useValue: '/' },
         UserService,
@@ -41,7 +43,8 @@ import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
         LoaderService,
         AuthenticationService,
         AddressService,
-        RegisterService
+        RegisterService,
+        ReservationService
     ],
     bootstrap: [AppComponent]
 })

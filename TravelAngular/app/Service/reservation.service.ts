@@ -6,11 +6,10 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
-export class UserService {
+export class ReservationService {
     constructor(private _http: Http) { }
 
     get(url: string): Observable<any> {
-        console.log(url);
         return this._http.get(url)
             .map((response: Response) => <any>response.json())
             .catch(this.handleError);
@@ -46,5 +45,4 @@ export class UserService {
         console.error(error);
         return Observable.throw(error.json().error || 'Server error');
     }
-
 }

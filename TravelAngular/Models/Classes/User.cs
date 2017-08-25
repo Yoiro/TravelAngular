@@ -15,6 +15,7 @@ namespace TravelAngular.Models.Classes
             LastName = "";
             FirstName = "";
             Rating = 0.0;
+            Reservations = new List<Reservation>();
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -24,5 +25,7 @@ namespace TravelAngular.Models.Classes
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public double Rating { get; set; }
+
+        public ICollection<Reservation> Reservations { get; set; }
     }
 }

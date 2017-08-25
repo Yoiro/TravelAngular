@@ -6,17 +6,12 @@ using System.Web;
 
 namespace TravelAngular.Models.Classes
 {
-    public class Comment
+    public class Reservation
     {
-        public Comment()
-        {
-            Writer = new User();
-            Content = "";
-        }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public User Writer { get; set; }
-        public User Subject { get; set; }
-        public string Content { get; set; }
+        public User User { get; set; }
+        public Travel Travel { get; set; }
+        public DateTime Date { get; set; }
     }
 }

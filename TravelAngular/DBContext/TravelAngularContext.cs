@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 using TravelAngular.Models.Classes;
 
 namespace TravelAngular.DBContext
 {
     public class TravelAngularContext : DbContext
     {
-        private TravelAngularContext () : base("TravelAngularContext"){}
+        public TravelAngularContext () : base("TravelAngularContext"){}
 
         public static TravelAngularContext getInstance()
         {
@@ -25,6 +20,7 @@ namespace TravelAngular.DBContext
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<TravelAngularContext, TravelAngular.Migrations.Configuration>());
         }
 
         public static TravelAngularContext instance;
@@ -33,5 +29,6 @@ namespace TravelAngular.DBContext
         public DbSet<PrivateMessage> PrivateMessages { get; set; }
         public DbSet<Travel> Travels { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
     }
 }

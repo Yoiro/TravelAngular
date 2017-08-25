@@ -15,16 +15,17 @@ namespace TravelAngular.Controllers
     {
         public HttpResponseMessage Get()
         {
-            Debug.WriteLine("GetTRAVELS\n" + TravelDB.Travels.AsEnumerable());
-            Debug.WriteLine("GetTRAVELS.JSON\n" + ToJson(TravelDB.Travels.AsEnumerable()));
             return ToJson(TravelDB.Travels.AsEnumerable());
+        }
+
+        public HttpResponseMessage Get(long id)
+        {
+            return ToJson(TravelDB.Travels.Find(id));
         }
 
         public HttpResponseMessage Post([FromBody]Travel value)
         {
-            Debug.WriteLine("PostTRAVELS\n" + value);
             TravelDB.Travels.Add(value);
-            Debug.WriteLine("PostTRAVELS: All \n" + TravelDB.Travels.AsEnumerable());
             return ToJson(TravelDB.SaveChanges());
         }
 

@@ -15,12 +15,15 @@ var global_1 = require("../shared/global");
 var address_service_1 = require("../Service/address.service");
 var user_service_1 = require("../Service/user.service");
 var auth_service_1 = require("../Service/auth.service");
+var reservation_service_1 = require("../Service/reservation.service");
+require("rxjs/add/operator/toPromise");
 var TravelsComponent = (function () {
-    function TravelsComponent(_travelService, _addressService, _userService, _authService) {
+    function TravelsComponent(_travelService, _addressService, _userService, _authService, _resService) {
         this._travelService = _travelService;
         this._addressService = _addressService;
         this._userService = _userService;
         this._authService = _authService;
+        this._resService = _resService;
         this.LoadUsers();
     }
     TravelsComponent.prototype.LoadUsers = function () {
@@ -40,18 +43,27 @@ var TravelsComponent = (function () {
     };
     TravelsComponent.prototype.subscribeToTravel = function (id) {
         var _this = this;
-        console.log(this.travels[id - 1].Places, "Subscribed!");
         var travelToSubscribe;
-        this._travelService.get(global_1.Global.BASE_TRAVEL_ENDPOINT + "/" + id).subscribe(function (travel) { return travelToSubscribe = travel; }, null, function () {
-            var log;
-            _this._authService.logged$.subscribe(function (logged$) { return log = logged$; }, null, function () {
-                if (log) {
-                    travelToSubscribe.Places -= 1;
-                    var user;
-                    _this._authService.loggedUser$.subscribe(function (usr) { return user = usr; }, null, function () {
-                    });
+        var user = JSON.parse(localStorage.getItem("user"));
+        if (user == null) {
+            alert("You must be logged in in order to subscribe to a travel");
+            return;
+        }
+        this._travelService.get(global_1.Global.BASE_TRAVEL_ENDPOINT + id).toPromise()
+            .then(function (travel) { return travelToSubscribe = travel; })
+            .then(function () {
+            if (user != null) {
+                travelToSubscribe.Places -= 1;
+                if (user.Reservations == null) {
+                    user.Reservations = new Array();
                 }
-            });
+                user.Reservations.push({ UserId: user.Id, TravelId: travelToSubscribe.Id, Date: Date.now() });
+                _this._resService.post(global_1.Global.BASE_RES_ENDPOINT, user.Reservations[user.Reservations.length - 1]).toPromise();
+            }
+        })
+            .then(function () {
+            _this._userService.put(global_1.Global.BASE_USER_ENDPOINT, user.Id, user).
+                toPromise().then(function (result) { return _this.msg = result; }).then(function () { return console.log(_this.msg); });
         });
     };
     return TravelsComponent;
@@ -60,7 +72,11 @@ TravelsComponent = __decorate([
     core_1.Component({
         templateUrl: "./Templates/travels.component.html"
     }),
-    __metadata("design:paramtypes", [travel_service_1.TravelService, address_service_1.AddressService, user_service_1.UserService, auth_service_1.AuthenticationService])
+    __metadata("design:paramtypes", [travel_service_1.TravelService,
+        address_service_1.AddressService,
+        user_service_1.UserService,
+        auth_service_1.AuthenticationService,
+        reservation_service_1.ReservationService])
 ], TravelsComponent);
 exports.TravelsComponent = TravelsComponent;
 //# sourceMappingURL=travels.component.js.map

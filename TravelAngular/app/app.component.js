@@ -15,8 +15,8 @@ var AppComponent = (function () {
     function AppComponent(_authService) {
         var _this = this;
         this._authService = _authService;
-        this.subscriptionLog = this._authService.getState()[0].subscribe(function (log) { return _this.logged = log; });
-        this.subscriptionAd = this._authService.getState()[1].subscribe(function (ad) { return _this.asAdmin = ad; });
+        this._authService.getState()[0].subscribe(function (log) { return _this.logged = log; });
+        this._authService.getState()[1].subscribe(function (ad) { return _this.asAdmin = ad; });
         var usr = JSON.parse(localStorage.getItem("user"));
         if (usr != null) {
             this.logged = true;
@@ -26,8 +26,6 @@ var AppComponent = (function () {
         }
     }
     AppComponent.prototype.ngOnDestroy = function () {
-        this.subscriptionLog.unsubscribe();
-        this.subscriptionAd.unsubscribe();
         if (JSON.parse(localStorage.getItem("user")) != null) {
             localStorage.removeItem("user");
         }

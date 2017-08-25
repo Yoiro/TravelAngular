@@ -11,17 +11,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var auth_service_1 = require("../Service/auth.service");
+var router_1 = require("@angular/router");
 var UserNavbarComponent = (function () {
-    function UserNavbarComponent(_authService) {
-        var _this = this;
+    function UserNavbarComponent(_authService, route) {
         this._authService = _authService;
-        this.subscription = this._authService.loggedUser$.subscribe(function (loggedUser$) { return _this.user = loggedUser$; });
+        this.route = route;
+        this.user = JSON.parse(localStorage.getItem('user'));
     }
     UserNavbarComponent.prototype.logout = function () {
         this._authService.logout();
     };
     UserNavbarComponent.prototype.ngOnDestroy = function () {
-        this.subscription.unsubscribe();
     };
     return UserNavbarComponent;
 }());
@@ -30,7 +30,7 @@ UserNavbarComponent = __decorate([
         selector: 'user-navbar',
         templateUrl: './Templates/user.navbar.component.html'
     }),
-    __metadata("design:paramtypes", [auth_service_1.AuthenticationService])
+    __metadata("design:paramtypes", [auth_service_1.AuthenticationService, router_1.ActivatedRoute])
 ], UserNavbarComponent);
 exports.UserNavbarComponent = UserNavbarComponent;
 //# sourceMappingURL=user.navbar.component.js.map

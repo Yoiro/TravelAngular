@@ -5,9 +5,10 @@ var Global = (function () {
     }
     return Global;
 }());
-Global.BASE_USER_ENDPOINT = 'api/userapi/';
-Global.BASE_TRAVEL_ENDPOINT = 'api/travelapi/';
-Global.BASE_ADDRESS_ENDPOINT = 'api/addressapi/';
+Global.BASE_USER_ENDPOINT = 'http://localhost:50008/api/userapi/';
+Global.BASE_TRAVEL_ENDPOINT = 'http://localhost:50008/api/travelapi/';
+Global.BASE_ADDRESS_ENDPOINT = 'http://localhost:50008/api/addressapi/';
+Global.BASE_RES_ENDPOINT = 'http://localhost:50008/api/reservationapi/';
 Global.logged = false;
 Global.asAdmin = false;
 exports.Global = Global;

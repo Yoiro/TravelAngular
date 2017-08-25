@@ -15,17 +15,16 @@ var Observable_1 = require("rxjs/Observable");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/do");
 require("rxjs/add/operator/catch");
-var UserService = (function () {
-    function UserService(_http) {
+var ReservationService = (function () {
+    function ReservationService(_http) {
         this._http = _http;
     }
-    UserService.prototype.get = function (url) {
-        console.log(url);
+    ReservationService.prototype.get = function (url) {
         return this._http.get(url)
             .map(function (response) { return response.json(); })
             .catch(this.handleError);
     };
-    UserService.prototype.post = function (url, model) {
+    ReservationService.prototype.post = function (url, model) {
         var body = JSON.stringify(model);
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
@@ -33,7 +32,7 @@ var UserService = (function () {
             .map(function (response) { return response.json(); })
             .catch(this.handleError);
     };
-    UserService.prototype.put = function (url, id, model) {
+    ReservationService.prototype.put = function (url, id, model) {
         var body = JSON.stringify(model);
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
@@ -41,22 +40,22 @@ var UserService = (function () {
             .map(function (response) { return response.json(); })
             .catch(this.handleError);
     };
-    UserService.prototype.delete = function (url, id) {
+    ReservationService.prototype.delete = function (url, id) {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
         return this._http.delete(url + id, options)
             .map(function (response) { return response.json(); })
             .catch(this.handleError);
     };
-    UserService.prototype.handleError = function (error) {
+    ReservationService.prototype.handleError = function (error) {
         console.error(error);
         return Observable_1.Observable.throw(error.json().error || 'Server error');
     };
-    return UserService;
+    return ReservationService;
 }());
-UserService = __decorate([
+ReservationService = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [http_1.Http])
-], UserService);
-exports.UserService = UserService;
-//# sourceMappingURL=user.service.js.map
+], ReservationService);
+exports.ReservationService = ReservationService;
+//# sourceMappingURL=reservation.service.js.map

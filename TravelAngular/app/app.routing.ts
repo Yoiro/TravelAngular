@@ -7,6 +7,7 @@ import { LoginComponent } from './Components/login.component';
 import { RegisterComponent } from './Components/register.component';
 import { AddTravelComponent } from './Components/addtravel.component';
 import { TravelsComponent } from './Components/travels.component';
+import { UserComponent } from './Components/user.component';
 
 const appRoutes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -15,8 +16,8 @@ const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'travelsm', component: TravelsMComponent },
     { path: 'travels', component: TravelsComponent },
-    //{ path: 'travel/:id', component: TravelComponent },
-    //{ path: 'travels/add', component: AddTravelComponent },
+    { path: 'users/:id', component: UserComponent },
+    { path: 'travels/add', component: AddTravelComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'travelsm/add', component: AddTravelComponent }
 ];
