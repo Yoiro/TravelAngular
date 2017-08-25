@@ -21,13 +21,13 @@ namespace TravelAngular.Models.Classes
         public DateTime Departure { get; set; }
         
         public int UserId { get; set; }
-        public int AddressId { get; set; }
+        public int OriginId { get; set; }
         public int DestinationId { get; set; }
 
         public ICollection<Reservation> Reservations { get; set; }
         [ForeignKey("UserId")]
         public virtual User Driver { get; set; }
-        [ForeignKey("AddressId")]
+        [ForeignKey("OriginId")]
         public virtual Address Origin { get; set; }
         [ForeignKey("DestinationId")]
         public virtual Address Destination { get; set; }

@@ -6,7 +6,7 @@ using TravelAngular.Models.Classes;
 
 namespace TravelAngular.DBContext
 {
-    public class DbFiller : System.Data.Entity.DropCreateDatabaseIfModelChanges<TravelAngularContext>
+    public class DbFiller : System.Data.Entity.CreateDatabaseIfNotExists<TravelAngularContext>
     {
         protected override void Seed(TravelAngularContext context)
         {

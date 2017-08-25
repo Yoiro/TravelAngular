@@ -11,7 +11,9 @@ namespace TravelAngular.DBContext
 {
     public class TravelAngularContext : DbContext
     {
-        private TravelAngularContext () : base("TravelAngularContext"){}
+        public TravelAngularContext () : base("TravelAngularContext"){
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<TravelAngularContext, TravelAngular.Migrations.Configuration>("TravelAngularContext"));
+        }
 
         public static TravelAngularContext getInstance()
         {
@@ -24,6 +26,7 @@ namespace TravelAngular.DBContext
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
 

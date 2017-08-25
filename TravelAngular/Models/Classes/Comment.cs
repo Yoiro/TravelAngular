@@ -18,11 +18,11 @@ namespace TravelAngular.Models.Classes
         public string Content { get; set; }
 
         public int WriterId { get; set; }
-        public int ReceiverId { get; set; }
+        public int SubjectId { get; set; }
 
         [ForeignKey("WriterId")]
         public virtual User Writer { get; set; }
-        [ForeignKey("ReceiverId")]
-        public virtual User Receiver { get; set; }
+        [ForeignKey("SubjectId")]
+        public virtual User Subject { get; set; }
     }
 }
